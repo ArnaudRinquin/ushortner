@@ -18,7 +18,7 @@ export function injectRedirectionsController(
     response.redirect(redirection.url);
   });
 
-  app.post("/create", async (request, response) => {
+  app.post("/redirections", async (request, response) => {
     const { slug, url } = request.body as { slug: string; url: string };
     const redirection = await createRedirection(services, { url, slug });
     response.send(redirection);

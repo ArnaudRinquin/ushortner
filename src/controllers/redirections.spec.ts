@@ -40,7 +40,7 @@ describe("GET /:slug", async () => {
   });
 });
 
-describe("POST /create", async () => {
+describe("POST /redirections", async () => {
   it("creates a redirection and returns it", async () => {
     const app: FastifyInstance = Fastify({});
     const services = makeTestServices();
@@ -54,7 +54,7 @@ describe("POST /create", async () => {
 
     await services.db.table("redirections").truncate();
     const response = await app.inject({
-      path: `/create`,
+      path: `/redirections`,
       method: "POST",
       body: attrs,
     });
