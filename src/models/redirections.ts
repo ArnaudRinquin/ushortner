@@ -15,7 +15,7 @@ export async function createRedirection(
     slug: string;
   }
 ) {
-  const redirection = await services.db("redirections").insert(
+  const [redirection] = await services.db<Redirection>("redirections").insert(
     {
       slug,
       url,
@@ -35,7 +35,7 @@ export async function findRedirection(
   }
 ) {
   const redirection = await services
-    .db("redirections")
+    .db<Redirection>("redirections")
     .select("*")
     .where({ slug })
     .first();

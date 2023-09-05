@@ -1,7 +1,12 @@
 import { makeApp } from "./app";
+import { Services } from "./services";
+import { makeDB } from "./services/db";
 
 const start = async () => {
-  const app = makeApp();
+  const services: Services = {
+    db: makeDB(),
+  };
+  const app = makeApp(services);
   try {
     await app.listen({ port: 3000 });
 

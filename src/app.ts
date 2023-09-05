@@ -1,6 +1,8 @@
 import Fastify, { FastifyInstance, RouteShorthandOptions } from "fastify";
+import { injectRedirectionsController } from "./controllers/redirections";
+import { Services } from "./services";
 
-export function makeApp() {
+export function makeApp(services: Services) {
   const app: FastifyInstance = Fastify({});
 
   const opts: RouteShorthandOptions = {
@@ -21,6 +23,8 @@ export function makeApp() {
   app.get("/", opts, async (request, reply) => {
     return { ok: true };
   });
+
+  injectRedirectionsController(app, services);
 
   return app;
 }

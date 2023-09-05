@@ -6,11 +6,9 @@ describe("createRedirection", () => {
   it("Creates and returns the redirection", async () => {
     const db = makeDB();
     await db.table("redirections").truncate();
-    const redirection = await createRedirection(
-      { db },
-      { url: "http://lolcat.host:1234", slug: "lolcathost" }
-    );
-    expect(redirection).toBeDefined();
+    const attrs = { url: "http://lolcat.host:1234", slug: "lolcathost" };
+    const redirection = await createRedirection({ db }, attrs);
+    expect(redirection).toEqual(attrs);
 
     const allRedirections = await db.table("redirections").select("*");
     expect(allRedirections).toEqual([
