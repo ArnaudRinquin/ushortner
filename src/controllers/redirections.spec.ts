@@ -39,3 +39,27 @@ describe("GET /:slug", async () => {
     await expect(response.headers["location"]).toEqual(redirection.url);
   });
 });
+
+describe("POST /create", async () => {
+  it("creates a redirection and returns it", async () => {
+    const app: FastifyInstance = Fastify({});
+    const services = makeTestServices();
+
+    injectRedirectionsController(app, services);
+
+    const attrs = {
+      slug: "new-lolcathost",
+      url: "https://developer.mozilla.org/",
+    };
+
+    await services.db.table("redirections").truncate();
+    const response = await app.inject({
+      path: `/create`,
+      method: "POST",
+      body: attrs,
+    });
+
+    expect(response.statusCode).toEqual(200);
+    expect(JSON.parse(response.body)).toEqual(attrs);
+  });
+});

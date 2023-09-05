@@ -1,6 +1,6 @@
 import { RouteShorthandOptions } from "fastify";
 import { makeApp } from "../app";
-import { findRedirection } from "../models/redirections";
+import { createRedirection, findRedirection } from "../models/redirections";
 import { Services } from "../services";
 
 export function injectRedirectionsController(
@@ -16,5 +16,11 @@ export function injectRedirectionsController(
     }
 
     response.redirect(redirection.url);
+  });
+
+  app.post("/create", async (request, response) => {
+    const { slug, url } = request.body as { slug: string; url: string };
+    const redirection = await createRedirection(services, { url, slug });
+    response.send(redirection);
   });
 }
