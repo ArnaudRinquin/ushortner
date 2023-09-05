@@ -18,6 +18,8 @@
     "vitest": "^0.34.3"
   },
   "dependencies": {
-    "fastify": "^4.22.2"
+    "fastify": "^4.22.2",
+    "knex": "^2.5.1",
+    "pg": "^8.11.3"
   }
 }
