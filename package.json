@@ -2,10 +2,10 @@
   "name": "ushort",
   "version": "0.0.0",
   "description": "URL shortening service",
-  "main": "dist/index.js",
+  "main": "dist/bin.js",
   "scripts": {
     "build": "tsc",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/bin.ts"
   },
   "author": "Arnaud Rinquin",
   "license": "MIT",
