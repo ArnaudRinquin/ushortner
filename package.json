@@ -4,6 +4,7 @@
   "description": "URL shortening service",
   "main": "dist/bin.js",
   "scripts": {
+    "start": "node dist/bin.js",
     "test": "vitest",
     "build": "tsc",
     "dev": "nodemon src/bin.ts"
