@@ -1,3 +1,6 @@
+> [!WARNING]
+> **Deprecated.** This project is no longer maintained and is kept for reference only. Issues and pull requests are not monitored.
+
 # UShort - URL shortening service
 
 This project has no other purpose than having fun coding.
